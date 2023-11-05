@@ -83,7 +83,7 @@ resource "aws_instance" "main" {
   key_name      = "mali-newkey"
 
   subnet_id              = aws_subnet.main.id
-  vpc_security_group_ids = [aws_security_group.all_sg["web_sg"].id]
+  vpc_security_group_ids = module.security_groups.security_group_id["web_sg"]
 
   user_data = <<-EOF
               #!/bin/bash
